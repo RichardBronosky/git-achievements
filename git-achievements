@@ -33,9 +33,11 @@ function git_achievements_command
 {
     case $2 in
         -p|--publish )
+            CMD_FLAG=publish
             publish_achievements
             ;;
         -l|--list )
+            CMD_FLAG=list
             cat "${ACHIEVEMENTSLOGFILE}"
             ;;
         * )
@@ -371,6 +373,7 @@ echo "
 
     # STATS
     cat git-achievements | grep 'unlock_achievement ' | grep -v ' sed ' | grep -v '\${' | sed -e 's/.*unlock_achievement //g' -e 's/^"//g' -e 's/"$//g' -e 's/\$power/X/g' -e 's/\$count/X/g' -e 's/\$hooks/X/g' | sort | awk -F"\" \"" '{ print "<li><div class=\"title\">" $1 "</div><div class=\"info\">" $2 "</div></li>" }' | link_to_git_docs > all.html
+    # balance the grep}
     total=`cat all.html | wc -l`
 
     unlockedCount=`clean_logged_achievements | awk '{ if (NR % 2 != 0) print $0 }' | sed -e 's/Apprentice //g' -e 's/Master //g' -e 's/(.*//g' | sort | uniq | wc -l`
@@ -425,7 +428,15 @@ There are $total Achievements. Some achievements can be leveled up depending on 
     echo "<title>${user}'s Git Achievements</title>" >> index.rss
     cat "${ACHIEVEMENTSLOGFILE}"  | grep -ve '^$' | grep -v 'Git Achievement Unlocked!' | grep -v '*' | sed -e 's/^ *//g'  -e 's/ *$//g' | awk '{ if (NR % 2 != 0) printf "<item><title>" $0 "</title>"; else printf "<description>" $0 "</description></item>\n" }' | tail -n 20 | sed '1!G;h;$!d' >> index.rss
     echo '</channel></rss>' >> index.rss
+    if [ ! "$CMD_FLAG" = "publish" ] && [ "`git config --global achievement.upload-silently`" = "true" ] ; then
+        push_achievement >/dev/null 2>&1
+    else
+        push_achievement
+    fi
+}
 
+function push_achievement
+{
     abortcount=`git status | grep 'Changes to be committed' | wc -l`
     if [ ! $abortcount -eq 0 ] ; then
         echo "There are staged changes in the repository, updates let uncommitted"
