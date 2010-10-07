@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Richard Bronosky's Git Achievements</title>
+<item><title>Historian (Level 6)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Apprentice Cleaning lady (Level 3)</title><description>Remove untracked files from the working tree with git clean</description></item>
 <item><title>Apprentice Miller (Level 1)</title><description>Add only part of a file to the stage 64 times with git add -p.</description></item>
 <item><title>Stone Mason (Level 6)</title><description>Added files to the index area for inclusion in the next commit with git add</description></item>
@@ -19,5 +20,4 @@
 <item><title>Presenter (Level 5)</title><description>Shows one or more objects (blobs, trees, tags and commits) with git show</description></item>
 <item><title>Historian (Level 5)</title><description>Investigate the commit log using git log.</description></item>
 <item><title>Apprentice Butcher (Level 3)</title><description>Performed an interactive rebase using git rebase -i.</description></item>
-<item><title>Apprentice Goldsmith (Level 3)</title><description>Reviewed patches before committing with git diff --cached.</description></item>
 </channel></rss>
