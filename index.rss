@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel>
 <title>Richard Bronosky's Git Achievements</title>
+<item><title>Apprentice Pilgrim (Level 1)</title><description>Performed a rebase using git rebase --onto.</description></item>
 <item><title>Blacksmith (Level 4)</title><description>Created a branch using git checkout -b.</description></item>
 <item><title>Master Socialite (Level 10)</title><description>pushed a branch to a remote repository using git push</description></item>
 <item><title>Merchant (Level 4)</title><description>Added an external repository with git remote add.</description></item>
@@ -19,5 +20,4 @@
 <item><title>Apprentice Merchant (Level 2)</title><description>Added an external repository with git remote add.</description></item>
 <item><title>Caretaker</title><description>Added a .gitignore file to a repository.</description></item>
 <item><title>Master Historian (Level 7)</title><description>Investigate the commit log using git log.</description></item>
-<item><title>Master Carpenter (Level       12)</title><description>Custom git hooks are installed which help catch issues before they are shared.</description></item>
 </channel></rss>
